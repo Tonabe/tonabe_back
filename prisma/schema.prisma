@@ -28,3 +28,12 @@ model Servico {
   funcionario   Funcionario @relation(fields: [idFuncionario], references: [id])
   produto       Produto     @relation(fields: [idProduto], references: [id])
 }
+
+model Meta {
+  id    Int     @id @default(autoincrement())
+  meta Float
+  data DateTime
+  idProduto Int
+
+  produto Produto @relation(fields: [idProduto], references: [id]) // Chave estrangeira do produto
+}
