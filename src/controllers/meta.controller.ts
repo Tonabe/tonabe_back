@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createMetaService, deleteMetaService, findAllMetasService, findMetaByIdService, findMetaByIdProdutoService, findMetaByDataService } from "../services/meta.service";
+import { createMetaService, updateMetaService, deleteMetaService, findAllMetasService, findMetaByIdService, findMetaByIdProdutoService, findMetaByDataService } from "../services/meta.service";
 
 export const createMeta = async (req: Request, res: Response)=> {
     try {
@@ -49,4 +49,13 @@ export const deleteMeta = async (req: Request, res: Response) => {
     } catch(error){
         return res.status(400).json({"error": error})
     }
+}
+
+export const updatMeta = async (req: Request, res: Response) => {
+  try {
+    const meta = await updateMetaService(Number(req.params.id), req.body) 
+    return res.status(200).json(meta) 
+  } catch (error) {
+    return res.status(400).json({ message: error }) 
+  }
 }
