@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+                  // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
@@ -13,4 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Servico {
+  id            Int       @id @default(autoincrement())
+  idFuncionario Int
+  idProduto     Int
+  quantidade    Float
+  duracao       Float
+  meta          Float
+  data          DateTime
 
+  // Definição das chaves estrangeiras
+  funcionario   Funcionario @relation(fields: [idFuncionario], references: [id])
+  produto       Produto     @relation(fields: [idProduto], references: [id])
+}
