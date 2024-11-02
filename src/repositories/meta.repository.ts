@@ -1,15 +1,15 @@
-import Meta from '../entities/meta.entity' // Importa o modelo de usuário
+import Meta from '../entities/meta.entity' 
 
 export const createMeta = async (data: { meta: number, data: Date, idProduto: number }) => {
-  return Meta.create({ data }) // Cria um novo usuário
+  return Meta.create({ data }) 
 }
 
 export const findAllMetas = async () => {
-  return Meta.findMany() // Busca todos os usuários
+  return Meta.findMany() 
 }
 
 export const findMetaByData = async (data: Date) => {
-  return Meta.findFirst({ where: { Date } }) // Busca um usuário pelo e-mail
+  return Meta.findFirst({ where: { Date } }) 
 }
 
 export const findMetaById = async (id: number) => {
@@ -22,4 +22,8 @@ export const findMetaByIdProduto = async (idProduto: number) => {
 
 export const deleteMeta = async (id: number) => {
     return Meta.delete({ where: { id } })
+}
+
+export const updateMeta = async (id: number, data: { meta: number, data: Date, idProduto: number }) => {
+  return Meta.update({ where: { id }, data }) 
 }
