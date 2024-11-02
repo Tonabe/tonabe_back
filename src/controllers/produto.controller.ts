@@ -1,12 +1,5 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 import { createProdutoService, deleteProdutoService, findAllProdutosService, findProdutoByIdService, updateProdutoService } from "../services/produto.service";
-
-export class ProdutoClasse{
-    public static findAllProdutos = async (req: Request, res: Response) => {
-        const produtos = await findAllProdutosService()
-        return res.status(200).json({"Produtos":produtos})
-    }
-}
 
 export const createProduto = async (req: Request, res: Response)=> {
     try {
