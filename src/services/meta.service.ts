@@ -1,4 +1,4 @@
-import { createMeta, findAllMetas, findMetaByData, findMetaById, findMetaByIdProduto, deleteMeta } from '../repositories/meta.repository' // Importa os métodos do repositório
+import { createMeta, findAllMetas, findMetaByData, findMetaById, findMetaByIdProduto, deleteMeta, updateMeta } from '../repositories/meta.repository' // Importa os métodos do repositório
 
 export const createMeta = async (data: { meta: number, data: Date, idProduto: number }) => {
   const meta = await findMetaByData(data.data) 
@@ -36,3 +36,12 @@ export const deleteMetaService = async (id: number) => {
     return deleteMeta(id)
 }
 
+export const updateMetaService = async (id: number, data: { meta: number, data: Date, idProduto: number }) => {
+  const meta = await findMetaById(id) 
+
+  if (!meta) {
+    throw new Error('Meta não encontrado') 
+  }
+
+  return updateMeta(id, data) 
+}
