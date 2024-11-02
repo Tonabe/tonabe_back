@@ -20,10 +20,10 @@ export const findProdutoByIdService = async (id: number) => {
 }
 
 export const updateProdutoService = async (id: number, data: ProdutoInterface) => {
-    const produto = await findProdutoByNome(data.nome)
+    const produto = await findProdutoById(id)
 
     if(!produto){
-        throw new Error(`Produto "${data.nome}" não encontrado`)
+        throw new Error(`Produto "${id}" não encontrado`)
     }
 
     return updateProduto(id,data)
