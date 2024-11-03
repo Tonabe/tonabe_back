@@ -40,4 +40,4 @@ export const deleteServiceService = async (id: number) => {
     if (!service) throw new Error('Serviço não encontrado')
 
     return await deleteService(id)
-};
+}
