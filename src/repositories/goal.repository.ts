@@ -16,8 +16,8 @@ export const findGoalByEndDate = async (endDate : Date) => {
   return Goal.findFirst({ where: { endDate } }) 
 }
 
-export const findGoalByStartAndEndDate = async (startDate : Date,endDate : Date) => {
-  return Goal.findFirst({where:{ AND: [{startDate}, {endDate}]}})
+export const findGoalByStartAndEndDate = async (data:{startDate : Date,endDate : Date}) => {
+  return Goal.findFirst({where:{ AND: [{startDate: data.startDate}, {endDate: data.endDate}]}})
 }
 
 export const findGoalById = async (id: number) => {

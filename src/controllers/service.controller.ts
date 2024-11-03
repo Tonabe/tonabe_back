@@ -7,7 +7,7 @@ import {
     findServicesByEmployeeService,
     findServicesByProductService,
     updateServiceService
-} from '../services/service.service.js'
+} from '../services/service.service'
 
 export const createService = async (req: Request, res: Response) => {
     try {
