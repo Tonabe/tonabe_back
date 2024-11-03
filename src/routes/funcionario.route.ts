@@ -1,5 +1,5 @@
 import { Router } from 'express' // Importa o Router do Express
-import { createFuncionario, updateFuncionario, deletarFuncionario, findAllFuncionarioController } from '../controllers/functionario.controller' // Importa os métodos do controlador
+import { createFuncionario, updateFuncionario, deletarFuncionario, findAllFuncionarioController } from '../controllers/funcionario.controller' // Importa os métodos do controlador
 
 const router = Router() // Cria uma instância do Router
 
