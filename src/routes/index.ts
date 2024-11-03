@@ -11,5 +11,4 @@ router.use('/produto', productRouter)
 router.use('/meta', goalRoutes)
 router.use('/funcionario', employeeRoutes)
 
-
 export default router

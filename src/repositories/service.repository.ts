@@ -10,8 +10,8 @@ interface CreateServiceDTO {
     date: Date
 }
 
-export const createService = async (date: CreateServiceDTO) => {
-    const service = await Service.create({ date })
+export const createService = async (data: CreateServiceDTO) => {
+    const service = await Service.create({ data })
     return service
 }
 
@@ -31,8 +31,8 @@ export const findServicesByProduct = async (idProduct: number) => {
     return Service.findMany({ where: { idProduct } })
 }
 
-export const updateService = async (id: number, date: UpdateServiceDTO) => {
-    return Service.update({ where: { id }, date })
+export const updateService = async (id: number, data: UpdateServiceDTO) => {
+    return Service.update({ where: { id }, data })
 }
 
 export const deleteService = async (id: number) => {

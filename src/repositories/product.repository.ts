@@ -1,8 +1,8 @@
 import Product from '../entities/product.entity'
 import { ProductInterface } from '../interfaces/product.interface'
 
-export const createProduct = async (date: ProductInterface) => {
-    return Product.create({date})
+export const createProduct = async (data: ProductInterface) => {
+    return Product.create({data})
 }
 
 export const findAllProducts = async () => {
@@ -17,8 +17,8 @@ export const findProductById = async (id: number) => {
     return Product.findFirst({where: {id}})
 }
 
-export const updateProduct = async (id: number, date: ProductInterface) => {
-    return Product.update({where: {id}, date})
+export const updateProduct = async (id: number, data: ProductInterface) => {
+    return Product.update({where: {id}, data})
 }
 
 export const deleteProduct = async (id: number) => {
