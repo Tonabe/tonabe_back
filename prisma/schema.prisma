@@ -20,7 +20,7 @@ model Produto {
 model Funcionario {
   id            Int       @id @default(autoincrement())
   nome          String
-  dataDeCriacao DateTime
+  dataDeContratacao DateTime
   Servico       Servico[]
 }
 
