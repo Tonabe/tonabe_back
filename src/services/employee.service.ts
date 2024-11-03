@@ -1,13 +1,13 @@
 import { createEmployee, deleteEmployeeRepository, findAllEmployee, findEmployeeById, updateEmployee } from '../repositories/employee.repository' // Importa os métodos do repositório
 
-export const createEmployeeService = async (date: { nome: string, CreationDate: any }) => {
+export const createEmployeeService = async (data: { name: string, hiringDate: any }) => {
   
-  date =  {...date, ...{CreationDate: new Date()}}
-  return createEmployee(date) 
+  data =  {...data, ...{CreationDate: new Date()}}
+  return createEmployee(data) 
 }
 
 export const findAllEmployeeService = async () => {
-  const employee = findAllEmployee() 
+  return findAllEmployee() 
 }
 
 export const findEmployeeByIdService = async (id: number) => {
@@ -18,7 +18,7 @@ export const updateEmployeeService = async (id: number, date: { name: string }) 
   const employee = await findEmployeeByIdService(id) 
 
   if (!employee) {
-    throw new Error('Usuário não encontrado') 
+    throw new Error('Employee not found') 
   }
 
   return updateEmployee(id, date) 
@@ -28,7 +28,7 @@ export const deleteEmployeeService = async (id: number) => {
   const employee = await findEmployeeById(id) 
 
   if (!employee) {
-    throw new Error('Usuário não encontrado') 
+    throw new Error('Employee not found') 
   }
 
   return deleteEmployeeRepository(id);

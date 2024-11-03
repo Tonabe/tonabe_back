@@ -1,15 +1,15 @@
 import Employee from '../entities/employee.entity' 
 
-export const createEmployee = async (date: { nome: string, CreationDate: string }) => {
-  return Employee.create({ date }) 
+export const createEmployee = async (data: { name: string, hiringDate: string }) => {
+  return Employee.create({ data }) 
 }
 
 export const findAllEmployee = async () => {
   return Employee.findMany() 
 }
 
-export const updateEmployee = async (id: number, date: { name: string}) => {
-  return Employee.update({ where: { id }, date }) 
+export const updateEmployee = async (id: number, data: { name: string}) => {
+  return Employee.update({ where: { id }, data }) 
 }
 
 export const deleteEmployeeRepository = async (id: number) => {

@@ -8,41 +8,48 @@ datasource db {
 }
 
 model Product {
-  id        Int       @id @default(autoincrement())
-  name      String
-  seal      Boolean
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Service   Service[]
-  Goal      Goal[]
+  id            Int       @id @default(autoincrement())
+  name          String
+  seal          Boolean
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  Service       Service[]
+  Goal          Goal[]
 }
 
 model Employee {
   id            Int       @id @default(autoincrement())
   name          String
-  hiringdate DateTime
+  hiringDate    DateTime
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   Service       Service[]
 }
 
 model Service {
-  id            Int      @id @default(autoincrement())
-  idEmployee Int
+  id            Int       @id @default(autoincrement())
+  idEmployee    Int
   idProduct     Int
   quantity      Float
-  duration       Float
+  duration      Float
   goal          Float
   date          DateTime
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   // Definição das chaves estrangeiras
-  employee Employee @relation(fields: [idEmployee], references: [id])
-  product     Product     @relation(fields: [idProduct], references: [id])
+  employee      Employee  @relation(fields: [idEmployee], references: [id])
+  product       Product   @relation(fields: [idProduct], references: [id])
 }
 
 model Goal {
-  id        Int      @id @default(autoincrement())
-  goal      Float
-  date      DateTime
-  idProduct Int
+  id            Int       @id @default(autoincrement())
+  goal          Float
+  startDate     DateTime
+  endDate       DateTime
+  idProduct     Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
-  product Product @relation(fields: [idProduct], references: [id]) // Chave estrangeira do produto
+  product       Product   @relation(fields: [idProduct], references: [id]) // Chave estrangeira do produto
 }
