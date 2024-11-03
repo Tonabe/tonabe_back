@@ -8,24 +8,15 @@ datasource db {
 }
 
 model Produto {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   nome      String
   lacre     Boolean
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Servico   Servico[]
-  Meta      Meta[]
-}
-
-model Funcionario {
-  id            Int       @id @default(autoincrement())
-  nome          String
-  dataDeCriacao DateTime
-  Servico       Servico[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Servico {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   idFuncionario Int
   idProduto     Int
   quantidade    Float
@@ -34,14 +25,14 @@ model Servico {
   data          DateTime
 
   // Definição das chaves estrangeiras
-  funcionario Funcionario @relation(fields: [idFuncionario], references: [id])
-  produto     Produto     @relation(fields: [idProduto], references: [id])
+  funcionario   Funcionario @relation(fields: [idFuncionario], references: [id])
+  produto       Produto     @relation(fields: [idProduto], references: [id])
 }
 
 model Meta {
-  id        Int      @id @default(autoincrement())
-  meta      Float
-  data      DateTime
+  id    Int     @id @default(autoincrement())
+  meta Float
+  data DateTime
   idProduto Int
 
   produto Produto @relation(fields: [idProduto], references: [id]) // Chave estrangeira do produto
