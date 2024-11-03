@@ -1,33 +1,33 @@
 import { IsDate, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
 
-export class CreateMetaDTO {
+export class CreateGoalDTO {
   @IsNumber()
   @IsNotEmpty()
-  meta!: number;
+  goal!: number;
 
   @IsNotEmpty()
   @IsDate()
-  data!: Date;
+  date!: Date;
 
   @IsOptional()
   @IsNumber()
   @IsNotEmpty()
-  idProduto!: number
+  idProduct!: number
 }
 
-export class UpdateMetaDTO {
+export class UpdateGoalDTO {
   
   @IsNumber()
   @IsNotEmpty()
-  meta?: number;
+  goal?: number;
 
   @IsOptional()
   @IsDate()
   @IsNotEmpty()
-  data?: Date;
+  date?: Date;
 
   @IsOptional()
   @IsNumber()
   @IsNotEmpty()
-  idProduto?: number
+  idProduct?: number
 }

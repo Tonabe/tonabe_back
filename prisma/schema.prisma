@@ -7,42 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Produto {
+model Product {
   id        Int       @id @default(autoincrement())
-  nome      String
-  lacre     Boolean
+  name      String
+  seal      Boolean
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  Servico   Servico[]
-  Meta      Meta[]
+  Service   Service[]
+  Goal      Goal[]
 }
 
-model Funcionario {
+model Employee {
   id            Int       @id @default(autoincrement())
-  nome          String
-  dataDeContratacao DateTime
-  Servico       Servico[]
+  name          String
+  hiringdate DateTime
+  Service       Service[]
 }
 
-model Servico {
+model Service {
   id            Int      @id @default(autoincrement())
-  idFuncionario Int
-  idProduto     Int
-  quantidade    Float
-  duracao       Float
-  meta          Float
-  data          DateTime
+  idEmployee Int
+  idProduct     Int
+  quantity      Float
+  duration       Float
+  goal          Float
+  date          DateTime
 
   // Definição das chaves estrangeiras
-  funcionario Funcionario @relation(fields: [idFuncionario], references: [id])
-  produto     Produto     @relation(fields: [idProduto], references: [id])
+  employee Employee @relation(fields: [idEmployee], references: [id])
+  product     Product     @relation(fields: [idProduct], references: [id])
 }
 
-model Meta {
+model Goal {
   id        Int      @id @default(autoincrement())
-  meta      Float
-  data      DateTime
-  idProduto Int
+  goal      Float
+  date      DateTime
+  idProduct Int
 
-  produto Produto @relation(fields: [idProduto], references: [id]) // Chave estrangeira do produto
+  product Product @relation(fields: [idProduct], references: [id]) // Chave estrangeira do produto
 }

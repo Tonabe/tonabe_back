@@ -1,59 +1,59 @@
 import { IsDate, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
 
-export class CreateServicoDTO {
+export class CreateServiceDTO {
     @IsNotEmpty()
     @IsNumber()
-    idFuncionario!: number;
+    idEmployee!: number;
 
     @IsNotEmpty()
     @IsNumber()
-    idProduto!: number;
+    idProduct!: number;
 
     @IsNotEmpty()
     @IsNumber()
-    quantidade!: number;
+    quantity!: number;
 
     @IsNotEmpty()
     @IsNumber()
-    duracao!: number;
+    duration!: number;
 
     @IsNotEmpty()
     @IsNumber()
-    meta!: number;
+    goal!: number;
 
     @IsNotEmpty()
     @IsDate()
-    data!: Date;
+    date!: Date;
 }
 
-export class UpdateServicoDTO {
+export class UpdateServiceDTO {
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    idFuncionario!: number
+    idEmployee!: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    idProduto!: number
+    idProduct!: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    quantidade!: number
+    quantity!: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    duracao!: number
+    duration!: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    meta!: number
+    goal!: number
 
     @IsOptional()
     @IsDate()
     @IsNotEmpty()
-    data!: Date
+    date!: Date
 }

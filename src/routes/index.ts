@@ -1,15 +1,15 @@
 import { Router } from "express"
-import servicoRoutes from './servico.route'
-import metaRoutes from './meta.route'
-import produtoRouter from "./produto.route";
-import funcionarioRoutes from './funcionario.route'
+import serviceRoutes from './service.route'
+import goalRoutes from './goal.route'
+import productRouter from "./product.route";
+import employeeRoutes from './employee.route'
 
 const router = Router();
 
-router.use('/servicos', servicoRoutes)
-router.use('/produto', produtoRouter)
-router.use('/meta', metaRouter)
-router.use('/funcionario', funcionarioRoutes)
+router.use('/servicos', serviceRoutes)
+router.use('/produto', productRouter)
+router.use('/meta', goalRoutes)
+router.use('/funcionario', employeeRoutes)
 
 
 export default router
