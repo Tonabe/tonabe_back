@@ -1,21 +1,21 @@
-import { createGoal, findAllGoals, findGoalByDate, findGoalById, findGoalByIdProduct, deleteGoal, updateGoal } from '../repositories/goal.repository' // Importa os métodos do repositório
+import { createGoal, findAllGoals, findGoalById, findGoalByIdProduct, deleteGoal, updateGoal, findGoalByStartAndEndDate } from '../repositories/goal.repository' // Importa os métodos do repositório
 
-export const createGoalService = async (date: { goal: number, date: Date, idProduct: number }) => {
-  const Goal = await findGoalByDate(date.date) 
+export const createGoalService = async (data: { goal: number, startDate: Date, endDate: Date, idProduct: number }) => {
+  const Goal = await findGoalByStartAndEndDate(data.startDate, data.endDate) 
 
   if (Goal) {
     throw new Error('Meta já existe') 
   }
 
-  return createGoal(date) 
+  return createGoal(data) 
 }
 
 export const findAllGoalsService = async () => {
   return findAllGoals() 
 }
 
-export const findGoalBydateService = async (date: Date) => {
-    return findGoalByDate(Date)
+export const findGoalBydateService = async (startDate: Date, endDate: Date) => {
+    return findGoalByStartAndEndDate(startDate, endDate) 
 }
 
 export const findGoalByIdService = async (id: number) => {
@@ -36,12 +36,12 @@ export const deleteGoalService = async (id: number) => {
     return deleteGoal(id)
 }
 
-export const updateGoalService = async (id: number, date: { goal: number, date: Date, idProduct: number }) => {
+export const updateGoalService = async (id: number, data: { goal: number, startDate: Date, endDate: Date, idProduct: number }) => {
   const Goal = await findGoalById(id) 
 
   if (!Goal) {
     throw new Error('Meta não encontrada') 
   }
 
-  return updateGoal(id, date) 
+  return updateGoal(id, data) 
 }
