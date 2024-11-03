@@ -6,10 +6,10 @@ import employeeRoutes from './employee.route'
 
 const router = Router();
 
-router.use('/servicos', serviceRoutes)
-router.use('/produto', productRouter)
-router.use('/meta', goalRoutes)
-router.use('/funcionario', employeeRoutes)
+router.use('/services', serviceRoutes)
+router.use('/product', productRouter)
+router.use('/goal', goalRoutes)
+router.use('/employee', employeeRoutes)
 
 
 export default router
