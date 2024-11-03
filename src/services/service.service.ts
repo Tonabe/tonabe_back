@@ -1,12 +1,12 @@
 import { CreateServiceDTO, UpdateServiceDTO } from "../dtos/service.dto"
 import { createService, deleteService, findAllServices, findServiceById, findServicesByEmployee, findServicesByProduct, updateService } from "../repositories/service.repository"
 
-export const createServiceService = async (date: CreateServiceDTO) => {
+export const createServiceService = async (data: CreateServiceDTO) => {
     // Verifique se já existe um serviço semelhante (opcional, dependendo do contexto)
     // const existingservice = await findserviceById(data.id);
     // if (existingservice) throw new Error('Serviço já existe');
 
-    return createService(date)
+    return createService(data)
 }
 
 export const findAllServicesService = async () => {
@@ -28,11 +28,11 @@ export const findServicesByProductService = async (idProduct: number) => {
     return await findServicesByProduct(idProduct)
 }
 
-export const updateServiceService = async (id: number, date: UpdateServiceDTO) => {
+export const updateServiceService = async (id: number, data: UpdateServiceDTO) => {
     const service = await findServiceById(id)
     if (!service) throw new Error('Serviço não encontrado')
 
-    return await updateService(id, date)
+    return await updateService(id, data)
 }
 
 export const deleteServiceService = async (id: number) => {
