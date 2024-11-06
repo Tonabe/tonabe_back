@@ -1,5 +1,6 @@
 import { UpdateServiceDTO } from '../dtos/service.dto'
 import Service from '../entities/service.entity'
+import { ServiceInteface } from '../interfaces/service.interface'
 
 interface CreateServiceDTO {
     idEmployee: number
@@ -10,7 +11,7 @@ interface CreateServiceDTO {
     date: Date
 }
 
-export const createService = async (data: CreateServiceDTO) => {
+export const createService = async (data: ServiceInteface) => {
     const service = await Service.create({ data })
     return service
 }
@@ -31,7 +32,7 @@ export const findServicesByProduct = async (idProduct: number) => {
     return Service.findMany({ where: { idProduct } })
 }
 
-export const updateService = async (id: number, data: UpdateServiceDTO) => {
+export const updateService = async (id: number, data: ServiceInteface) => {
     return Service.update({ where: { id }, data })
 }
 

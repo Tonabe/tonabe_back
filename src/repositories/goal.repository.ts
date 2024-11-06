@@ -1,6 +1,7 @@
 import Goal from '../entities/goal.entity' 
+import { GoalInterface } from '../interfaces/goal.interface'
 
-export const createGoal = async (data: { goal: number, startDate: Date, endDate: Date,idProduct: number }) => {
+export const createGoal = async (data:GoalInterface) => {
   return Goal.create({ data }) 
 }
 
@@ -32,6 +33,6 @@ export const deleteGoal = async (id: number) => {
     return Goal.delete({ where: { id } })
 }
 
-export const updateGoal = async (id: number, data: { goal: number, startDate: Date, endDate: Date, idProduct: number }) => {
+export const updateGoal = async (id: number, data: GoalInterface) => {
   return Goal.update({ where: { id }, data }) 
 }

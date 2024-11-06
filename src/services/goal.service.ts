@@ -1,6 +1,7 @@
+import { GoalInterface } from '../interfaces/goal.interface'
 import { createGoal, findAllGoals, findGoalById, findGoalByIdProduct, deleteGoal, updateGoal, findGoalByStartAndEndDate } from '../repositories/goal.repository' // Importa os métodos do repositório
 
-export const createGoalService = async (data: { goal: number, startDate: Date, endDate: Date, idProduct: number }) => {
+export const createGoalService = async (data: GoalInterface) => {
   
   const Goal = await findGoalByStartAndEndDate({startDate: data.startDate, endDate: data.endDate}) 
 
@@ -37,7 +38,7 @@ export const deleteGoalService = async (id: number) => {
     return deleteGoal(id)
 }
 
-export const updateGoalService = async (id: number, data: { goal: number, startDate: Date, endDate: Date, idProduct: number }) => {
+export const updateGoalService = async (id: number, data: GoalInterface) => {
   const Goal = await findGoalById(id) 
 
   if (!Goal) {

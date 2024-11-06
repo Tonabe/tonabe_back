@@ -1,7 +1,8 @@
 import { CreateServiceDTO, UpdateServiceDTO } from "../dtos/service.dto"
+import { ServiceInteface } from "../interfaces/service.interface"
 import { createService, deleteService, findAllServices, findServiceById, findServicesByEmployee, findServicesByProduct, updateService } from "../repositories/service.repository"
 
-export const createServiceService = async (data: CreateServiceDTO) => {
+export const createServiceService = async (data: ServiceInteface) => {
     // Verifique se já existe um serviço semelhante (opcional, dependendo do contexto)
     // const existingservice = await findserviceById(data.id);
     // if (existingservice) throw new Error('Serviço já existe');
@@ -28,7 +29,7 @@ export const findServicesByProductService = async (idProduct: number) => {
     return await findServicesByProduct(idProduct)
 }
 
-export const updateServiceService = async (id: number, data: UpdateServiceDTO) => {
+export const updateServiceService = async (id: number, data: ServiceInteface) => {
     const service = await findServiceById(id)
     if (!service) throw new Error('Serviço não encontrado')
 

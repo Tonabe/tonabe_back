@@ -1,6 +1,7 @@
 import Employee from '../entities/employee.entity' 
+import { EmployeeInterface } from '../interfaces/employee.interface'
 
-export const createEmployee = async (data: { name: string, hiringDate: string }) => {
+export const createEmployee = async (data: EmployeeInterface) => {
   return Employee.create({ data }) 
 }
 
@@ -8,7 +9,7 @@ export const findAllEmployee = async () => {
   return Employee.findMany() 
 }
 
-export const updateEmployee = async (id: number, data: { name: string}) => {
+export const updateEmployee = async (id: number, data: EmployeeInterface) => {
   return Employee.update({ where: { id }, data }) 
 }
 

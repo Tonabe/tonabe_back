@@ -1,6 +1,7 @@
+import { EmployeeInterface } from '../interfaces/employee.interface'
 import { createEmployee, deleteEmployeeRepository, findAllEmployee, findEmployeeById, updateEmployee } from '../repositories/employee.repository' // Importa os métodos do repositório
 
-export const createEmployeeService = async (data: { name: string, hiringDate: any }) => {
+export const createEmployeeService = async (data: EmployeeInterface) => {
   
   data =  {...data, ...{CreationDate: new Date()}}
   return createEmployee(data) 
@@ -14,7 +15,7 @@ export const findEmployeeByIdService = async (id: number) => {
   return findEmployeeById(id) 
 }
 
-export const updateEmployeeService = async (id: number, date: { name: string }) => {
+export const updateEmployeeService = async (id: number, date: EmployeeInterface) => {
   const employee = await findEmployeeByIdService(id) 
 
   if (!employee) {
