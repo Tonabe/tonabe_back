@@ -91,11 +91,9 @@
                 "type": "object",
                 "properties": {
                     "goal": {"type": "float"},
-                    "startDate":{"type": "DateTime"},
-                    "endDate":{"type": "DateTime"} ,
                     "idProduct": {"type": "integer"},
-                    "createdAt":{"type": "DateTime"},
-                    "updatedAt":{"type": "DateTime"}
+                    "startDate":{"type": "DateTime"},
+                    "endDate":{"type": "DateTime"}
                 }
             }
         }
