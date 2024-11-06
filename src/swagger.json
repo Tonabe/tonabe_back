@@ -10,4 +10,94 @@
             "url": "http://localhost:3000/api"
         }
     ],
-    "paths": {} }
+    "paths": {
+        "/goal": {
+            "get": {
+                "summary": "Lista todas as Metas",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Goal"
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary": "Adiciona 1 Meta",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/CreateGoalDTO"
+                            }
+                        }
+                    }
+                },
+                 "responses":{
+                    "201": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "$ref": "#/components/schemas/Goal"
+                                }
+                            }
+                        }
+                    },
+                     "400": {
+                        "description": "Erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties":{
+                                        "message": {
+                                            "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+        "components":{
+        "schemas": {
+            "Goal": {
+                "type": "object",
+                "poperties": {
+                    "id": {"type": "integer"},
+                    "goal": {"type": "float"},
+                    "startDate":{"type": "DateTime"},
+                    "endDate":{"type": "DateTime"} ,
+                    "idProduct": {"type": "integer"},
+                    "createdAt":{"type": "DateTime"},
+                    "updatedAt":{"type": "DateTime"}
+                }
+                },
+                "CreateGoalDTO":{
+                "type": "object",
+                "properties": {
+                    "goal": {"type": "float"},
+                    "startDate":{"type": "DateTime"},
+                    "endDate":{"type": "DateTime"} ,
+                    "idProduct": {"type": "integer"},
+                    "createdAt":{"type": "DateTime"},
+                    "updatedAt":{"type": "DateTime"}
+                }
+            }
+        }
+    }
+}
