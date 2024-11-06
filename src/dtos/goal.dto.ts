@@ -7,24 +7,33 @@ export class CreateGoalDTO {
 
   @IsNotEmpty()
   @IsDate()
-  date!: Date;
+  startDate!: Date;
 
-  @IsOptional()
+  @IsNotEmpty()
+  @IsDate()
+  endDate!: Date;
+
   @IsNumber()
   @IsNotEmpty()
   idProduct!: number
 }
 
 export class UpdateGoalDTO {
-  
+
+  @IsOptional()
   @IsNumber()
   @IsNotEmpty()
   goal?: number;
 
   @IsOptional()
-  @IsDate()
   @IsNotEmpty()
-  date?: Date;
+  @IsDate()
+  startDate?: Date;
+
+  @IsOptional()
+  @IsNotEmpty()
+  @IsDate()
+  endDate?: Date;
 
   @IsOptional()
   @IsNumber()
