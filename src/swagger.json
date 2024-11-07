@@ -71,6 +71,128 @@
                     }
                 }
             }
+        },
+        "/product": {
+            "get": {
+                "summary": "Lista todos os Produtos",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary": "Adiciona 1 Produto",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/CreateProductDTO"
+                            }
+                        }
+                    }
+                },
+                 "responses":{
+                    "201": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                     "400": {
+                        "description": "Erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties":{
+                                        "message": {
+                                            "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/service": {
+            "get": {
+                "summary": "Lista todos os Serviços",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Service"
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary": "Adiciona 1 Serviço",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/CreateServiceDTO"
+                            }
+                        }
+                    }
+                },
+                 "responses":{
+                    "201": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                     "400": {
+                        "description": "Erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties":{
+                                        "message": {
+                                            "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
         "components":{
@@ -94,6 +216,50 @@
                     "idProduct": {"type": "integer"},
                     "startDate":{"type": "DateTime"},
                     "endDate":{"type": "DateTime"}
+                }
+                },
+                "Product": {
+                "type": "object",
+                "poperties": {
+                    "id": {"type": "integer"},
+                    "name": {"type": "string"},
+                    "seal":{"type": "boolean"},
+                    "Service":{"type": "Service[]"} ,
+                    "Goal": {"type": "Goal[]"},
+                    "createdAt":{"type": "DateTime"},
+                    "updatedAt":{"type": "DateTime"}
+                }
+                },
+               "CreateProductDTO":{
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "seal":{"type": "boolean"}
+                }
+                },
+                "Service": {
+                "type": "object",
+                "poperties": {
+                    "id": {"type": "integer"},
+                    "idEmployee": {"type": "integer"},
+                    "idProduct":{"type": "integer"},
+                    "quantity":{"type": "float"} ,
+                    "duration": {"type": "float"},
+                    "goal": {"type": "float"},
+                    "date": {"type": "DateTime"},
+                    "createdAt":{"type": "DateTime"},
+                    "updatedAt":{"type": "DateTime"}
+                }
+                },
+               "CreateServiceDTO":{
+                "type": "object",
+                "properties": {
+                    "idEmployee": {"type": "integer"},
+                    "idProduct":{"type": "integer"},
+                    "quantity":{"type": "float"} ,
+                    "duration": {"type": "float"},
+                    "goal": {"type": "float"},
+                    "date": {"type": "DateTime"}
                 }
             }
         }
