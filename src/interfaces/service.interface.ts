@@ -1,4 +1,4 @@
-export interface ServiceInteface{
+export interface ServiceInterface{
     idEmployee: number,
     idProduct: number,
     quantity: number,
