@@ -1,17 +1,17 @@
-import { IsDate, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateGoalDTO {
   @IsNumber()
   @IsNotEmpty()
   goal!: number;
 
+  @IsString()
   @IsNotEmpty()
-  @IsDate()
-  startDate!: Date;
+  startDate!: string;
 
+  @IsString()
   @IsNotEmpty()
-  @IsDate()
-  endDate!: Date;
+  endDate!: string;
 
   @IsNumber()
   @IsNotEmpty()
@@ -27,13 +27,13 @@ export class UpdateGoalDTO {
 
   @IsOptional()
   @IsNotEmpty()
-  @IsDate()
-  startDate?: Date;
+  @IsString()
+  startDate?: string;
 
   @IsOptional()
   @IsNotEmpty()
-  @IsDate()
-  endDate?: Date;
+  @IsString()
+  endDate?: string;
 
   @IsOptional()
   @IsNumber()

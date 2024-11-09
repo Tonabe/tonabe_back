@@ -1,7 +1,7 @@
-import { IsBoolean, IsNotEmpty, IsNumber } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreateProductDto {
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     name!: string;
 
@@ -11,7 +11,7 @@ export class CreateProductDto {
 }
 
 export class UpdateProductDto {
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     name!: string;
 
