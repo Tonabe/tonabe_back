@@ -1,59 +1,59 @@
-import { IsDate, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateServiceDTO {
     @IsNotEmpty()
     @IsNumber()
-    idEmployee!: number;
+    idEmployee!: number
 
     @IsNotEmpty()
     @IsNumber()
-    idProduct!: number;
+    idProduct!: number
 
     @IsNotEmpty()
     @IsNumber()
-    quantity!: number;
+    goal!: number
 
     @IsNotEmpty()
     @IsNumber()
-    duration!: number;
+    quantity!: number
 
     @IsNotEmpty()
     @IsNumber()
-    goal!: number;
+    duration!: number
 
     @IsNotEmpty()
-    @IsDate()
-    date!: Date;
+    @IsString()
+    date!: string
 }
 
 export class UpdateServiceDTO {
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    idEmployee!: number
+    idEmployee?: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    idProduct!: number
+    idProduct?: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    quantity!: number
+    goal?: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    duration!: number
+    quantity?: number
 
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    goal!: number
+    duration?: number
 
     @IsOptional()
-    @IsDate()
+    @IsString()
     @IsNotEmpty()
-    date!: Date
+    date?: string
 }

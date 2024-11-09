@@ -1,10 +1,15 @@
-import { CreateServiceDTO, UpdateServiceDTO } from "../dtos/service.dto"
 import { ServiceInterface } from "../interfaces/service.interface"
 import { createService, deleteService, findAllServices, findServiceById, findServicesByEmployee, findServicesByProduct, updateService } from "../repositories/service.repository"
 
-export const createServiceService = async (id: number, data: ServiceInterface) => {
-    //const existingservice = await findServiceById(data.id);
-   // if (existingservice) throw new Error('Serviço já existe');
+export const createServiceService = async (data: ServiceInterface) => {
+    const dateString = data.date
+
+    function formatDate(x: string) {
+        const [day, month, year] = x.split('/');
+        return `${year}-${month}-${day}`;
+    }
+    const defaultDate = formatDate(dateString)+"T00:00:00Z"
+    data = {...data, date: defaultDate}
 
     return createService(data)
 }

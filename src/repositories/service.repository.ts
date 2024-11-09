@@ -1,17 +1,7 @@
-import { UpdateServiceDTO } from '../dtos/service.dto'
 import Service from '../entities/service.entity'
-import { ServiceInteface } from '../interfaces/service.interface'
+import { ServiceInterface } from '../interfaces/service.interface'
 
-interface CreateServiceDTO {
-    idEmployee: number
-    idProduct: number
-    quantity: number
-    duration: number
-    goal: number
-    date: Date
-}
-
-export const createService = async (data: ServiceInteface) => {
+export const createService = async (data: ServiceInterface) => {
     const service = await Service.create({ data })
     return service
 }
@@ -21,7 +11,7 @@ export const findAllServices = async () => {
 }
 
 export const findServiceById = async (id: number) => {
-    return Service.findFirst({ where: { id } })
+    return Service.findFirst({ where: { id } , include: {product: true, employee: true}})
 }
 
 export const findServicesByEmployee = async (idEmployee: number) => {
@@ -32,7 +22,7 @@ export const findServicesByProduct = async (idProduct: number) => {
     return Service.findMany({ where: { idProduct } })
 }
 
-export const updateService = async (id: number, data: ServiceInteface) => {
+export const updateService = async (id: number, data: ServiceInterface) => {
     return Service.update({ where: { id }, data })
 }
 

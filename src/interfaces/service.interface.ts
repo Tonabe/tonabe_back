@@ -1,8 +1,8 @@
 export interface ServiceInterface{
     idEmployee: number,
     idProduct: number,
+    goal: number,
     quantity: number,
     duration: number,
-    goal: number,
-    date: Date
+    date: string
 }
