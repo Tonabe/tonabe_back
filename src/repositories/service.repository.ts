@@ -11,7 +11,25 @@ export const findAllServices = async () => {
 }
 
 export const findServiceById = async (id: number) => {
-    return Service.findFirst({ where: { id } , include: {product: true, employee: true}})
+    return Service.findFirst({ where: { id }, include: { product: true, employee: true } })
+}
+
+export const findServiceByDateEmployeeProduct = async (
+    idEmployee: number,
+    idProduct: number,
+    dateStart: string,
+    dateEnd: string) => {
+
+    return Service.findMany({
+        where: {
+            idEmployee: idEmployee,
+            idProduct: idProduct,
+            date: {
+                gte: dateStart,
+                lte: dateEnd
+            },
+        }, include: { product: true, employee: true }
+    })
 }
 
 export const findServicesByEmployee = async (idEmployee: number) => {
