@@ -16,12 +16,12 @@ export const createService = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(400).json({ error })
     }
-};
+}
 
 export const findAllServices = async (req: Request, res: Response) => {
     const services = await findAllServicesService()
     return res.json(services)
-};
+}
 
 export const findServiceById = async (req: Request, res: Response) => {
     try {
@@ -49,7 +49,7 @@ export const updateService = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(400).json({ error })
     }
-};
+}
 
 export const deleteService = async (req: Request, res: Response) => {
     try {
@@ -63,7 +63,7 @@ export const deleteService = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(400).json({ error })
     }
-};
+}
 
 export const findServicesByEmployee = async (req: Request, res: Response) => {
     try {
@@ -77,7 +77,7 @@ export const findServicesByEmployee = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(400).json({ error })
     }
-};
+}
 
 export const findServicesByProduct = async (req: Request, res: Response) => {
     try {
@@ -91,4 +91,4 @@ export const findServicesByProduct = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(400).json({ error })
     }
-};
+}
