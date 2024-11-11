@@ -214,8 +214,8 @@
                 "properties": {
                     "goal": {"type": "float"},
                     "idProduct": {"type": "integer"},
-                    "startDate":{"type": "DateTime"},
-                    "endDate":{"type": "DateTime"}
+                    "startDate":{"type": "string"},
+                    "endDate":{"type": "string"}
                 }
                 },
                 "Product": {
