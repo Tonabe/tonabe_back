@@ -259,7 +259,7 @@
                     "quantity":{"type": "float"} ,
                     "duration": {"type": "float"},
                     "goal": {"type": "float"},
-                    "date": {"type": "DateTime"}
+                    "date": {"type": "string"}
                 }
             }
         }
