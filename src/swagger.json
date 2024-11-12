@@ -72,6 +72,67 @@
                 }
             }
         },
+         "/employee": {
+            "get": {
+                "summary": "Lista todos as Funcionários",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/employee"
+                                        
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary": "Adiciona 1 funcionário",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/CreateEmployeeDTO"
+                            }
+                        }
+                    }
+                },
+                 "responses":{
+                    "201": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    },
+                     "400": {
+                        "description": "Erro",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties":{
+                                        "message": {
+                                            "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/product": {
             "get": {
                 "summary": "Lista todos os Produtos",
@@ -237,7 +298,7 @@
                     "seal":{"type": "boolean"}
                 }
                 },
-                "Service": {
+            "Service": {
                 "type": "object",
                 "poperties": {
                     "id": {"type": "integer"},
@@ -260,6 +321,23 @@
                     "duration": {"type": "float"},
                     "goal": {"type": "float"},
                     "date": {"type": "string"}
+                }
+                },
+                "Employee": {
+                "type": "object",
+                "poperties": {
+                    "id": {"type": "integer"},
+                    "name": {"type": "string"},
+                    "hiringDate": {"type": "DateTime"},
+                    "createdAt":{"type": "DateTime"},
+                    "updatedAt":{"type": "DateTime"}
+                }
+                },
+               "CreateEmployeeDTO":{
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "hiringDate": {"type": "string"}
                 }
             }
         }
