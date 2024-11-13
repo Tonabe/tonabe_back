@@ -266,7 +266,7 @@
                 "type": "object",
                 "poperties": {
                     "id": {"type": "integer"},
-                    "goal": {"type": "float"},
+                    "goal": {"type": "number"},
                     "startDate":{"type": "DateTime"},
                     "endDate":{"type": "DateTime"} ,
                     "idProduct": {"type": "integer"},
@@ -277,7 +277,7 @@
                 "CreateGoalDTO":{
                 "type": "object",
                 "properties": {
-                    "goal": {"type": "float"},
+                    "goal": {"type": "number"},
                     "idProduct": {"type": "integer"},
                     "startDate":{"type": "string"},
                     "endDate":{"type": "string"}
@@ -308,9 +308,9 @@
                     "id": {"type": "integer"},
                     "idEmployee": {"type": "integer"},
                     "idProduct":{"type": "integer"},
-                    "quantity":{"type": "float"} ,
-                    "duration": {"type": "float"},
-                    "goal": {"type": "float"},
+                    "quantity":{"type": "number"} ,
+                    "duration": {"type": "number"},
+                    "goal": {"type": "number"},
                     "date": {"type": "DateTime"},
                     "createdAt":{"type": "DateTime"},
                     "updatedAt":{"type": "DateTime"}
@@ -321,9 +321,9 @@
                 "properties": {
                     "idEmployee": {"type": "integer"},
                     "idProduct":{"type": "integer"},
-                    "quantity":{"type": "float"} ,
-                    "duration": {"type": "float"},
-                    "goal": {"type": "float"},
+                    "quantity":{"type": "number"} ,
+                    "duration": {"type": "number"},
+                    "goal": {"type": "number"},
                     "date": {"type": "string"}
                 }
                 },
