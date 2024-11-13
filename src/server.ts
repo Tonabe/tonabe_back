@@ -3,6 +3,7 @@ import express from 'express'
 import routes from './routes'
 import swaggerUi from 'swagger-ui-express'
 import swaggerFile from './swagger.json'
+from cors im
 
 dotenv.config()
 
@@ -14,6 +15,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(express.json())
 
 app.use('/api', routes)
+
+app.use(cors())
 
 app.get('/teste_endpoint', (req, res) => {
     res.send("Olá! Você está na tela de teste de endpoint! :)")
