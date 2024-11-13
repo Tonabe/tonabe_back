@@ -29,6 +29,7 @@
                         }
                     }
                 }
+             }
             },
             "post":{
                 "summary": "Adiciona 1 Meta",
@@ -70,11 +71,11 @@
                         }
                     }
                 }
-            }
-        },
+            },
+        
          "/employee": {
             "get": {
-                "summary": "Lista todos as Funcionários",
+                "summary": "Lista todos os Funcionários",
                 "responses": {
                     "200": {
                         "description": "Sucesso",
@@ -90,6 +91,7 @@
                         }
                     }
                 }
+            }
             },
             "post":{
                 "summary": "Adiciona 1 funcionário",
@@ -131,8 +133,8 @@
                         }
                     }
                 }
-            }
-        },
+            },
+        
         "/product": {
             "get": {
                 "summary": "Lista todos os Produtos",
@@ -150,6 +152,7 @@
                             }
                         }
                     }
+                }
                 }
             },
             "post":{
@@ -192,8 +195,8 @@
                         }
                     }
                 }
-            }
-        },
+            },
+        
         "/service": {
             "get": {
                 "summary": "Lista todos os Serviços",
@@ -212,6 +215,7 @@
                         }
                     }
                 }
+            }
             },
             "post":{
                 "summary": "Adiciona 1 Serviço",
@@ -253,9 +257,9 @@
                         }
                     }
                 }
-            }
-        }
-    },
+            },
+    
+    
         "components":{
         "schemas": {
             "Goal": {
@@ -343,3 +347,5 @@
         }
     }
 }
+}
+
