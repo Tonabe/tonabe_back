@@ -2,12 +2,9 @@ import { EmployeeInterface } from '../interfaces/employee.interface'
 import { createEmployee, deleteEmployeeRepository, findAllEmployee, findEmployeeById, updateEmployee } from '../repositories/employee.repository' // Importa os métodos do repositório
 
 export const createEmployeeService = async (data: EmployeeInterface) => {
-  const dateString = data.hiringDate
-  function formatDate(x: string) {
-    const [day, month, year] = x.split('/');
-    return `${year}-${month}-${day}`;
-  }
-  const defaultDate = formatDate(dateString)+"T00:00:00Z"
+  const dateFront = data.hiringDate
+
+  const defaultDate = dateFront+"T00:00:00Z"
   data = {...data, hiringDate: defaultDate}
   return createEmployee(data) 
 }
