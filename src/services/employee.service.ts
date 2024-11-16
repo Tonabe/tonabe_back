@@ -10,8 +10,32 @@ export const createEmployeeService = async (data: EmployeeInterface) => {
 }
 
 export const findAllEmployeeService = async () => {
-  return findAllEmployee() 
-}
+  const employees = await findAllEmployee();
+
+  if (!employees || !Array.isArray(employees)) {
+    throw new Error("Erro ao buscar os funcionários.");
+  }
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  const formattedEmployees = employees.map(employee => {
+    if (employee.hiringDate) {
+      return {
+        ...employee,
+        hiringDate: formatDate(String(employee.hiringDate))
+      };
+    }
+    return employee;
+  });
+
+  return formattedEmployees;
+};
 
 export const findEmployeeByIdService = async (id: number) => {
   return findEmployeeById(id) 
