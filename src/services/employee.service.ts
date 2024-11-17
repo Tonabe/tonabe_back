@@ -4,9 +4,9 @@ import { createEmployee, deleteEmployeeRepository, findAllEmployee, findEmployee
 export const createEmployeeService = async (data: EmployeeInterface) => {
   const dateFront = data.hiringDate
 
-  const defaultDate = dateFront+"T00:00:00Z"
-  data = {...data, hiringDate: defaultDate}
-  return createEmployee(data) 
+  const defaultDate = dateFront + "T00:00:00Z"
+  data = { ...data, hiringDate: defaultDate }
+  return createEmployee(data)
 }
 
 export const findAllEmployeeService = async () => {
@@ -39,26 +39,26 @@ export const findAllEmployeeService = async () => {
 };
 
 export const findEmployeeByIdService = async (id: number) => {
-  return findEmployeeById(id) 
+  return findEmployeeById(id)
 }
 
 export const updateEmployeeService = async (id: number, data: EmployeeInterface) => {
-  const employee = await findEmployeeByIdService(id) 
+  const employee = await findEmployeeByIdService(id)
 
   if (!employee) {
-    throw new Error('Employee not found') 
+    throw new Error('Employee not found')
   }
 
-  return updateEmployee(id, data) 
+  return updateEmployee(id, data)
 }
 
 export const deleteEmployeeService = async (id: number) => {
-  const employee = await findEmployeeById(id) 
+  const employee = await findEmployeeById(id)
 
   if (!employee) {
-    throw new Error('Employee not found') 
+    throw new Error('Employee not found')
   }
 
   return deleteEmployeeRepository(id);
-  
+
 }
