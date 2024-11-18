@@ -1,16 +1,21 @@
-import { Request, Response } from 'express' // Importa os tipos do Express
+import { Request, Response } from 'express'
 import { createEmployeeService, deleteEmployeeService, findAllEmployeeService, updateEmployeeService } from '../services/employee.service'
 
 export const createEmployee = async (req: Request, res: Response) => {
-  if (!findAllEmployeeService() === req.body.name) {
-    try {
-      const employee = await createEmployeeService(req.body)
-      return res.status(201).json(employee)
-    } catch (error: any) {
-      return res.status(400).json({ message: error.message })
+  try {
+    const employees = await findAllEmployeeService()
+    const isDuplicate = employees.some((employee: any) => employee.name.toUpperCase() === req.body.name.toUpperCase())
+
+    if (isDuplicate) {
+      return res.status(400).json({ message: "Funcionário já cadastrado!" })
     }
+
+    const employee = await createEmployeeService(req.body)
+    return res.status(201).json(employee)
+
+  } catch (error: any) {
+    return res.status(500).json({ message: "Erro ao criar funcionário!", error: error.message })
   }
-  return res.status(400).json({ message: "Funcionario já cadastrado!"})
 }
 
 export const findAllEmployeeController = async (req: Request, res: Response) => {
@@ -20,19 +25,19 @@ export const findAllEmployeeController = async (req: Request, res: Response) => 
 
 export const updateEmployee = async (req: Request, res: Response) => {
   try {
-    const employee = await updateEmployeeService(Number(req.params.id), req.body) // Atualiza um usuário
-    return res.status(200).json(employee) // Retorna o usuário atualizado
+    const employee = await updateEmployeeService(Number(req.params.id), req.body)
+    return res.status(200).json(employee)
   } catch (error: any) {
     console.log(error)
-    return res.status(400).json({ message: error.message }) // Retorna um erro
+    return res.status(400).json({ message: error.message })
   }
 }
 
 export const deleteEmployee = async (req: Request, res: Response) => {
   try {
     await deleteEmployeeService(Number(req.params.id))
-    return res.status(200).send();
+    return res.status(200).send()
   } catch (error: any) {
-    return res.status(400).json({ message: error.message }) // Retorna um erro
+    return res.status(400).json({ message: error.message })
   }
 }
