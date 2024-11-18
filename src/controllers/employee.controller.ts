@@ -25,6 +25,13 @@ export const findAllEmployeeController = async (req: Request, res: Response) => 
 
 export const updateEmployee = async (req: Request, res: Response) => {
   try {
+    const employees = await findAllEmployeeService()
+    const isDuplicate = employees.some((employee: any) => employee.name.toUpperCase() === req.body.name.toUpperCase())
+
+    if (isDuplicate) {
+      return res.status(400).json({ message: "Essa atualização não pode ser realizada pois ira gerar duplicidade de funcionarios!" })
+    }
+
     const employee = await updateEmployeeService(Number(req.params.id), req.body)
     return res.status(200).json(employee)
   } catch (error: any) {

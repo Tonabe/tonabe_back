@@ -33,6 +33,13 @@ export const findAllProducts = async (req: Request, res: Response) => {
 
 export const updateProduct = async (req: Request, res: Response) => {
     try {
+        const products = await findAllProductsService()
+        const isDuplicate = products.some((product: any) => product.name.toUpperCase() === req.body.name.toUpperCase())
+
+        if (isDuplicate) {
+            return res.status(400).json({ message: "Essa atualização não pode ser realizada pois ira gerar duplicidade de produtos!" })
+        }
+
         const product = await updateProductService(Number(req.params.id), req.body)
         return res.status(200).json({ "Product": product })
     } catch (error) {
