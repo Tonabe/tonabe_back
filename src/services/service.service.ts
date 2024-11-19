@@ -4,8 +4,8 @@ import { createService, deleteService, findAllServices, findServiceById, findSer
 export const createServiceService = async (data: ServiceInterface) => {
     const dateFront = data.date
 
-    const defaultDate = dateFront+"T00:00:00Z"
-    data = {...data, date: defaultDate}
+    const defaultDate = dateFront + "T00:00:00Z"
+    data = { ...data, date: defaultDate }
 
     return createService(data)
 }
@@ -32,6 +32,11 @@ export const findServicesByProductService = async (idProduct: number) => {
 export const updateServiceService = async (id: number, data: ServiceInterface) => {
     const service = await findServiceById(id)
     if (!service) throw new Error('Serviço não encontrado')
+
+    const dateFront = data.date
+
+    const defaultDate = dateFront + "T00:00:00Z"
+    data = { ...data, date: defaultDate }
 
     return await updateService(id, data)
 }
