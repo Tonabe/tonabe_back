@@ -48,6 +48,10 @@ export const updateEmployeeService = async (id: number, data: EmployeeInterface)
   if (!employee) {
     throw new Error('Employee not found')
   }
+  const dateFront = data.hiringDate
+
+  const defaultDate = dateFront + "T00:00:00Z"
+  data = { ...data, hiringDate: defaultDate }
 
   return updateEmployee(id, data)
 }
