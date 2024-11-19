@@ -132,7 +132,87 @@
                             }
                         }
                     }
-                }
+                },
+                "patch":{
+                    "summary": "Atualiza 1 funcionário",
+                    "requestBody": {
+                        "required": "true",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "$ref": "#/components/schemas/UpdateEmployeeDTO"
+                                }
+                            }
+                        }
+                    },
+                     "responses":{
+                        "201": {
+                            "description": "Sucesso",
+                            "content": {
+                                "application/json": {
+                                    "schema":{
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        },
+                         "400": {
+                            "description": "Erro",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties":{
+                                            "message": {
+                                                "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "delete":{
+                        "summary": "Deleta 1 funcionário",
+                        "requestBody": {
+                            "required": "true",
+                            "content": {
+                                "application/json": {
+                                    "schema":{
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        },
+                         "responses":{
+                            "201": {
+                                "description": "Sucesso",
+                                "content": {
+                                    "application/json": {
+                                        "schema":{
+                                            "$ref": "#/components/schemas/Employee"
+                                        }
+                                    }
+                                }
+                            },
+                             "400": {
+                                "description": "Erro",
+                                "content": {
+                                    "application/json": {
+                                        "schema": {
+                                            "type": "object",
+                                            "properties":{
+                                                "message": {
+                                                    "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
             },
         
         "/product": {
@@ -257,6 +337,7 @@
                         }
                     }
                 }
+            }
             },
     
     
@@ -266,7 +347,7 @@
                 "type": "object",
                 "poperties": {
                     "id": {"type": "integer"},
-                    "goal": {"type": "number"},
+                    "goal": {"type": "float"},
                     "startDate":{"type": "DateTime"},
                     "endDate":{"type": "DateTime"} ,
                     "idProduct": {"type": "integer"},
@@ -308,9 +389,9 @@
                     "id": {"type": "integer"},
                     "idEmployee": {"type": "integer"},
                     "idProduct":{"type": "integer"},
-                    "quantity":{"type": "number"} ,
-                    "duration": {"type": "number"},
-                    "goal": {"type": "number"},
+                    "quantity":{"type": "float"} ,
+                    "duration": {"type": "float"},
+                    "goal": {"type": "float"},
                     "date": {"type": "DateTime"},
                     "createdAt":{"type": "DateTime"},
                     "updatedAt":{"type": "DateTime"}
@@ -321,9 +402,9 @@
                 "properties": {
                     "idEmployee": {"type": "integer"},
                     "idProduct":{"type": "integer"},
-                    "quantity":{"type": "number"} ,
-                    "duration": {"type": "number"},
-                    "goal": {"type": "number"},
+                    "quantity":{"type": "float"} ,
+                    "duration": {"type": "float"},
+                    "goal": {"type": "float"},
                     "date": {"type": "string"}
                 }
                 },
@@ -343,9 +424,17 @@
                     "name": {"type": "string"},
                     "hiringDate": {"type": "string"}
                 }
-            }
+                },
+                "UpdateEmployeeDTO":{
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "hiringDate":{"type": "string"}
+                    }
+                }
         }
     }
 }
-}
+
+
 
