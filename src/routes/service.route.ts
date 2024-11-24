@@ -18,7 +18,7 @@ router.get('/', findAllServices)
 router.get('/:id', findServiceById)
 router.patch('/:id', validate(UpdateServiceDTO), updateService)
 router.delete('/:id', deleteService)
-router.get('/employee/:idEmployee', findServicesByEmployee)
-router.get('/product/:idProduct', findServicesByProduct)
+router.get('/employee/:id', findServicesByEmployee)
+router.get('/product/:id', findServicesByProduct)
 
 export default router

@@ -8,7 +8,7 @@ export const createGoal = async (req: Request, res: Response)=> {
         return res.status(201).json({"Goal": goal})
     } catch (error) {
         return res.status(400).json({"error": error})
-    }
+    }   
 }
 
 export const findGoalById = async (req: Request, res: Response) => {
@@ -37,7 +37,7 @@ export const findGoalByIdProduct = async (req: Request, res: Response) => {
 export const findGoalByDate = async (req: Request, res: Response) => {
     try{
         const goal = await findGoalByStartAndEndDate(req.body)
-        return res.status(200).json({"Goal": goal})
+        return res.status(200).json({"Goal": [goal]})
     }catch(error){
         return res.status(400).json({"error": error})
     }
