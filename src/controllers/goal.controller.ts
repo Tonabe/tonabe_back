@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { createGoalService, updateGoalService, deleteGoalService, findAllGoalsService, findGoalByIdService, findGoalByIdProductService, findGoalBydateService } from "../services/goal.service";
-import { findGoalByStartAndEndDate } from '../repositories/goal.repository';
 
 export const createGoal = async (req: Request, res: Response)=> {
     try {
@@ -36,7 +35,9 @@ export const findGoalByIdProduct = async (req: Request, res: Response) => {
 
 export const findGoalByDate = async (req: Request, res: Response) => {
     try{
-        const goal = await findGoalByStartAndEndDate(req.body)
+        const startDate = req.body.startDate
+        const endDate = req.body.endDate
+        const goal = await findGoalBydateService(startDate, endDate)
         return res.status(200).json({"Goal": goal})
     }catch(error){
         return res.status(400).json({"error": error})
