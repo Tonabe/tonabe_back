@@ -40,7 +40,7 @@ export const findGoalByDate = async (req: Request, res: Response) => {
         const goal = await findGoalBydateService(startDate, endDate)
         return res.status(200).json({"Goal": goal})
     }catch(error){
-        return res.status(400).json({"error": error})
+        return res.status(400).json({"error": error,})
     }
 }
 
