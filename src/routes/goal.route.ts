@@ -9,7 +9,7 @@ router.post('/', validate(CreateGoalDTO), createGoal)
 router.patch('/:id', validate(UpdateGoalDTO), updateGoal) 
 router.get('/', findAllGoals)
 router.get('/date', findGoalByDate)
-router.get('/:id', findGoalByIdProduct)
+router.get('/product/:id', findGoalByIdProduct)
 router.get('/:id', findGoalById)
 router.delete('/:id', deleteGoal)
 

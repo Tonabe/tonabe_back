@@ -67,11 +67,10 @@ export const deleteService = async (req: Request, res: Response) => {
 
 export const findServicesByEmployee = async (req: Request, res: Response) => {
     try {
-        const idEmployee = Number(req.params.idEmployee)
+        const idEmployee = Number(req.params.id)
         if (isNaN(idEmployee)) {
             return res.status(400).json({ message: 'ID do funcionário inválido' })
         }
-        
         const services = await findServicesByEmployeeService(idEmployee)
         return res.status(200).json(services)
     } catch (error) {
@@ -81,7 +80,7 @@ export const findServicesByEmployee = async (req: Request, res: Response) => {
 
 export const findServicesByProduct = async (req: Request, res: Response) => {
     try {
-        const idProduct = Number(req.params.idProduct)
+        const idProduct = Number(req.params.id)
         if (isNaN(idProduct)) {
             return res.status(400).json({ message: 'ID do Product inválido' })
         }

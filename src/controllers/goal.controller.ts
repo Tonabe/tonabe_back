@@ -7,7 +7,7 @@ export const createGoal = async (req: Request, res: Response)=> {
         return res.status(201).json({"Goal": goal})
     } catch (error) {
         return res.status(400).json({"error": error})
-    }
+    }   
 }
 
 export const findGoalById = async (req: Request, res: Response) => {
