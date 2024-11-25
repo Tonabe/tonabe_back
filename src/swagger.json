@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/api"
+            "url": "http://localhost:8000/api"
         }
     ],
     "paths": {
@@ -72,6 +72,100 @@
                     }
                 }
             },
+            "/goal/{id}": {
+    "patch": {
+        "summary": "Atualiza 1 meta",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                },
+                "description": "ID da meta a ser atualizada"
+            }
+        ],
+        "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/UpdateGoalDTO"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Meta atualizada com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Goal"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Erro ao atualizar a meta",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "delete": {
+        "summary": "Deleta 1 meta",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                },
+                "description": "ID da meta a ser deletada"
+            }
+        ],
+        "responses": {
+            "204": {
+                "description": "Sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Goal"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Erro",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
         
          "/employee": {
             "get": {
@@ -132,89 +226,9 @@
                             }
                         }
                     }
-                },
-                "patch":{
-                    "summary": "Atualiza 1 funcionário",
-                    "requestBody": {
-                        "required": "true",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "$ref": "#/components/schemas/UpdateEmployeeDTO"
-                                }
-                            }
-                        }
-                    },
-                     "responses":{
-                        "201": {
-                            "description": "Sucesso",
-                            "content": {
-                                "application/json": {
-                                    "schema":{
-                                        "$ref": "#/components/schemas/Employee"
-                                    }
-                                }
-                            }
-                        },
-                         "400": {
-                            "description": "Erro",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties":{
-                                            "message": {
-                                                "type": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "delete":{
-                        "summary": "Deleta 1 funcionário",
-                        "requestBody": {
-                            "required": "true",
-                            "content": {
-                                "application/json": {
-                                    "schema":{
-                                        "$ref": "#/components/schemas/Employee"
-                                    }
-                                }
-                            }
-                        },
-                         "responses":{
-                            "201": {
-                                "description": "Sucesso",
-                                "content": {
-                                    "application/json": {
-                                        "schema":{
-                                            "$ref": "#/components/schemas/Employee"
-                                        }
-                                    }
-                                }
-                            },
-                             "400": {
-                                "description": "Erro",
-                                "content": {
-                                    "application/json": {
-                                        "schema": {
-                                            "type": "object",
-                                            "properties":{
-                                                "message": {
-                                                    "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                }
             },
-        
+                
         "/product": {
             "get": {
                 "summary": "Lista todos os Produtos",
@@ -338,7 +352,7 @@
                     }
                 }
             }
-            },
+        },
     
     
         "components":{
@@ -425,16 +439,16 @@
                     "hiringDate": {"type": "string"}
                 }
                 },
-                "UpdateEmployeeDTO":{
-                    "type": "object",
-                    "properties": {
-                        "name": {"type": "string"},
-                        "hiringDate":{"type": "string"}
-                    }
-                }
+                "UpdateGoalDTO": {
+    "type": "object",
+    "properties": {
+        "goal": {"type": "number"},
+        "startDate": {"type": "string"},
+        "endDate": {"type": "string"},
+        "idProduct": {"type": "number"}
+    }
+}
         }
     }
 }
-
-
 
