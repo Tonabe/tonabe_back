@@ -128,10 +128,10 @@ export const generateReportbyProductAndEmployee = async (req: Request, res: Resp
             return serviceDate >= startDate && serviceDate <= endDate;
           });
 
-        const duration = filtered_service_data.reduce((total, item) => total + (item?.duration || 0), 0);
+        const duration = filtered_service_data.reduce((total, item) => total + (item?.duration || 0), 0).toFixed(2);
         const total = filtered_service_data.reduce((total, item) => total + (item?.quantity || 0), 0);
 
-        const media = duration > 0 ? (total / duration).toFixed(2) : "0.00";
+        const media = Number(duration) > 0 ? (total / Number(duration)).toFixed(2) : "0.00";
 
         res.status(200).json({
             idProduct: idProduct, 
