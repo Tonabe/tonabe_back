@@ -38,8 +38,10 @@ export const findGoalByDate = async (req: Request, res: Response) => {
         const startDate = req.body.startDate
         const endDate = req.body.endDate
         const goal = await findGoalBydateService(startDate, endDate)
+        console.log('enviou a data')
         return res.status(200).json({"Goal": goal})
     }catch(error){
+        console.log('não enviou a data')
         return res.status(400).json({"error": error,})
     }
 }
