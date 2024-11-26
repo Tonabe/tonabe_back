@@ -30,47 +30,7 @@
                     }
                 }
              }
-            },
-            "post":{
-                "summary": "Adiciona 1 Meta",
-                "requestBody": {
-                    "required": "true",
-                    "content": {
-                        "application/json": {
-                            "schema":{
-                                "$ref": "#/components/schemas/CreateGoalDTO"
-                            }
-                        }
-                    }
-                },
-                 "responses":{
-                    "201": {
-                        "description": "Sucesso",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "$ref": "#/components/schemas/Goal"
-                                }
-                            }
-                        }
-                    },
-                     "400": {
-                        "description": "Erro",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties":{
-                                        "message": {
-                                            "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            }
             },
             "/goal/{id}": {
     "patch": {
@@ -178,7 +138,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/employee"
+                                        "$ref": "#/components/schemas/Employee"
                                         
                                 }
                             }
@@ -186,49 +146,60 @@
                     }
                 }
             }
-            },
-            "post":{
-                "summary": "Adiciona 1 funcionário",
-                "requestBody": {
-                    "required": "true",
-                    "content": {
-                        "application/json": {
-                            "schema":{
-                                "$ref": "#/components/schemas/CreateEmployeeDTO"
-                            }
+        },
+        "patch": {
+        "summary": "Atualiza 1 funcionário",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                },
+                "description": "ID do funcionário a ser atualizado"
+            }
+        ],
+        "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/UpdateEmployeeDTO"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Funcionário atualizado com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Employee"
                         }
                     }
-                },
-                 "responses":{
-                    "201": {
-                        "description": "Sucesso",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
-                    },
-                     "400": {
-                        "description": "Erro",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties":{
-                                        "message": {
-                                            "type": "string"
-                                            }
-                                        }
-                                    }
+                }
+            },
+            "400": {
+                "description": "Erro ao atualizar o funcionário",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
                                 }
                             }
                         }
                     }
                 }
-            },
-                
+            }
+        }
+    }
+},
+            
         "/product": {
             "get": {
                 "summary": "Lista todos os Produtos",
@@ -288,9 +259,59 @@
                             }
                         }
                     }
+                },
+        "patch": {
+        "summary": "Atualiza 1 produto",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                },
+                "description": "ID do produto a ser atualizado"
+            }
+        ],
+        "requestBody": {
+            "required": true,
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/UpdateProductDTO"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Produto atualizado com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    }
                 }
             },
-        
+            "400": {
+                "description": "Erro ao atualizar o produto",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
         "/service": {
             "get": {
                 "summary": "Lista todos os Serviços",
@@ -439,13 +460,20 @@
                     "hiringDate": {"type": "string"}
                 }
                 },
-                "UpdateGoalDTO": {
+                "UpdateProductDTO": {
     "type": "object",
     "properties": {
-        "goal": {"type": "number"},
-        "startDate": {"type": "string"},
-        "endDate": {"type": "string"},
-        "idProduct": {"type": "number"}
+        "name": {"type": "string"},
+        "seal": {"type": "boolean"}
+    }
+},
+"UpdateEmployeeDTO": {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "hiringDate": {"type": "string",
+    "format": "DateTime"}
+        
     }
 }
         }
