@@ -33,57 +33,7 @@
             }
             },
             "/goal/{id}": {
-    "patch": {
-        "summary": "Atualiza 1 meta",
-        "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                    "type": "integer"
-                },
-                "description": "ID da meta a ser atualizada"
-            }
-        ],
-        "requestBody": {
-            "required": true,
-            "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref": "#/components/schemas/UpdateGoalDTO"
-                    }
-                }
-            }
-        },
-        "responses": {
-            "200": {
-                "description": "Meta atualizada com sucesso",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Goal"
-                        }
-                    }
-                }
-            },
-            "400": {
-                "description": "Erro ao atualizar a meta",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
+    
     "delete": {
         "summary": "Deleta 1 meta",
         "parameters": [
@@ -146,58 +96,7 @@
                     }
                 }
             }
-        },
-        "patch": {
-        "summary": "Atualiza 1 funcionário",
-        "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                    "type": "integer"
-                },
-                "description": "ID do funcionário a ser atualizado"
-            }
-        ],
-        "requestBody": {
-            "required": true,
-            "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref": "#/components/schemas/UpdateEmployeeDTO"
-                    }
-                }
-            }
-        },
-        "responses": {
-            "200": {
-                "description": "Funcionário atualizado com sucesso",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Employee"
-                        }
-                    }
-                }
-            },
-            "400": {
-                "description": "Erro ao atualizar o funcionário",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
-    }
 },
             
         "/product": {
@@ -259,7 +158,9 @@
                             }
                         }
                     }
-                },
+                }
+            },
+                "/product/{id}": {
         "patch": {
         "summary": "Atualiza 1 produto",
         "parameters": [
@@ -331,48 +232,8 @@
                     }
                 }
             }
-            },
-            "post":{
-                "summary": "Adiciona 1 Serviço",
-                "requestBody": {
-                    "required": "true",
-                    "content": {
-                        "application/json": {
-                            "schema":{
-                                "$ref": "#/components/schemas/CreateServiceDTO"
-                            }
-                        }
-                    }
-                },
-                 "responses":{
-                    "201": {
-                        "description": "Sucesso",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "$ref": "#/components/schemas/Service"
-                                }
-                            }
-                        }
-                    },
-                     "400": {
-                        "description": "Erro",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties":{
-                                        "message": {
-                                            "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
+        }
         },
     
     
